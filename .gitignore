@@ -1,3 +1,9 @@
+# CodeBlocks
+bin/
+*.depend
+*.cbp
+*.layout
+
 # Prerequisites
 *.d
 
@@ -30,3 +36,4 @@
 *.exe
 *.out
 *.app
+
