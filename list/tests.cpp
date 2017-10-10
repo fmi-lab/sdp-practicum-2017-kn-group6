@@ -1,5 +1,6 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 
+#include <iostream>
 #include "../doctest.h"
 
 #include "linked_list.hpp"
@@ -191,4 +192,62 @@ TEST_CASE("map function over list" * doctest::skip(true)) {
         head = head->_next;
     }
     CHECK(head == nullptr);
+}
+
+TEST_CASE("list iterator") {
+    IntList list;
+    const int SIZE = 100;
+    for (int i = SIZE; i > 0; --i) {
+        list.push_front(i);
+    }
+
+    REQUIRE(list.size() == SIZE);
+
+    /*
+    SUBCASE("traversal with prefix operator++") {
+        ListIterator<int> iter = list.begin();
+
+        for (int i = 1; iter != list.end(); ++iter, ++i) {
+            CHECK(i == *iter);
+        }
+    }
+
+    SUBCASE("traversal with postfix operator++") {
+        ListIterator<int> iter = list.begin();
+
+        for (int i = 1; i <= SIZE; ++i) {
+            CHECK(*iter == i);
+            CHECK(*(iter++) == i);  // iterator still points to previous element
+        }
+        CHECK(iter == list.end());
+    }
+
+    SUBCASE("iterator cannot move after end") {
+        IntList list = {1, 2};
+        ListIterator<int> iter = list.begin(), end = list.end();
+        CHECK(*iter == 1);
+        iter++;
+        CHECK(*iter == 2);
+        ++iter;
+        CHECK(iter == end);
+
+        iter++;
+        CHECK(iter == list.end());
+        ++iter;
+        CHECK(iter == list.end());
+    }
+
+    SUBCASE("iterator can be type-casted to bool") {
+        ListIterator<int> iter = list.begin();
+
+        int i = 1;
+        while (iter) {
+            CHECK(iter);
+            CHECK(*iter == i);
+            ++iter; ++i;
+        }
+        CHECK(!iter);
+        CHECK(iter == list.end());
+    }
+    */
 }

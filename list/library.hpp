@@ -7,15 +7,15 @@ template<typename T>
 int count(Node<T>* list, T x) {
     Node<T>* curr = list;
 
-    int occurences = 0;
+    int occurrences = 0;
     while (curr->_next != nullptr) {
         if (curr->_value == x) {
-            ++occurences;
+            ++occurrences;
         }
         curr = curr->_next;
     }
 
-    return occurences;
+    return occurrences;
 }
 
 template<typename T>

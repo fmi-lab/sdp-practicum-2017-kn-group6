@@ -16,6 +16,11 @@ public:
 };
 
 template <typename T>
+class ListIterator {
+    // TODO: implement
+};
+
+template <typename T>
 class LinkedList : public List<T> {
 private:
     Node<T> *_head;
@@ -91,6 +96,16 @@ public:
 
     ~LinkedList() {
         clear();
+    }
+
+    ListIterator<T> begin() const {
+        // TODO: implement
+        return ListIterator<T>();
+    }
+
+    ListIterator<T> end() const {
+        // TODO: implement
+        return ListIterator<T>();
     }
 
     const std::size_t size() const override {
