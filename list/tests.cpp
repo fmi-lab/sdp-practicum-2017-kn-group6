@@ -1,6 +1,5 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 
-#include <vector>
 #include "../doctest.h"
 
 #include "linked_list.hpp"
@@ -155,30 +154,41 @@ TEST_CASE("list elements can be accessed with") {
     }
 }
 
-TEST_CASE("count occurrences of element x") {
-    SUBCASE("count") {
-        IntList list;
-        const int SIZE = 10;
-        for (int i = 0; i < SIZE; ++i) {
-            list.push_front(i);
-        }
-
-        CHECK(count(list.head(), 1) == 1);
+TEST_CASE("count occurrences of an element in list") {
+    IntList list;
+    const int SIZE = 10;
+    for (int i = 0; i < SIZE; ++i) {
+        list.push_front(i);
     }
+
+    CHECK(count(list.head(), 1) == 1);
 }
 
-//TEST_CASE("list library") {
-//    SUBCASE("concat") {
-//        IntList list1 = {1, 2, 3, 4, 5, 6};
-//        IntList list2 = {7, 8, 9, 10};
-//
-//        Node<int>* list = concat<int>(list1.head(), list2.head());
-//
-//        Node<int>* head = list;
-//        for (int i = 1; i <= 10; ++i) {
-//            CHECK(head->_value == i);
-//            head = head->_next;
-//        }
-//        CHECK(head == nullptr);
-//    }
-//}
+// remove * doctest::skip(true) to unskip test
+TEST_CASE("concatenate lists" * doctest::skip(true)) {
+    IntList list1 = {1, 2, 3, 4, 5, 6};
+    IntList list2 = {7, 8, 9, 10};
+
+    Node<int>* list = concat<int>(list1.head(), list2.head());
+
+    Node<int>* head = list;
+    for (int i = 1; i <= 10; ++i) {
+        CHECK(head->_value == i);
+        head = head->_next;
+    }
+    CHECK(head == nullptr);
+}
+
+// remove * doctest::skip(true) to unskip test
+TEST_CASE("map function over list" * doctest::skip(true)) {
+    IntList list = {1, 2, 3, 4, 5, 6, 7};
+
+    Node<int>* mapped = map(list.head(), [](int x){return x * x;});
+
+    Node<int>* head = mapped;
+    for (int i = 1; i <= list.size(); ++i) {
+        CHECK(head->_value == i * i);
+        head = head->_next;
+    }
+    CHECK(head == nullptr);
+}

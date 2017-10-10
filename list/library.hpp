@@ -4,12 +4,6 @@
 #include "linked_list.hpp"
 
 template<typename T>
-Node<T> *concat(Node<T> *l1, Node<T> *l2) {
-    // TODO: implement
-    return nullptr;
-}
-
-template<typename T>
 int count(Node<T>* list, T x) {
     Node<T>* curr = list;
 
@@ -22,6 +16,17 @@ int count(Node<T>* list, T x) {
     }
 
     return occurences;
+}
+
+template<typename T>
+Node<T> *concat(Node<T> *l1, Node<T> *l2) {
+    // TODO: implement
+    return nullptr;
+}
+
+Node<int>* map(Node<int>* list, int (*fn)(int)) {
+    // TODO: implement
+    return nullptr;
 }
 
 #endif //LIST_LIBRARY_H
