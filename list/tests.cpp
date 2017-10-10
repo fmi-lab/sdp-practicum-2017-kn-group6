@@ -194,6 +194,24 @@ TEST_CASE("map function over list" * doctest::skip(true)) {
     CHECK(head == nullptr);
 }
 
+TEST_CASE("revesing a list") {
+    IntList list;
+    const int SIZE = 3;
+    for (int i = 0; i < SIZE; ++i) {
+        list.push_front(i);
+    }
+
+    Node<int>* head = list.head();
+    reverse(head);
+
+    for (int i = 0; i < SIZE; ++i) {
+        CHECK(head->_value == i);
+        head = head->_next;
+    }
+
+    CHECK(head == nullptr);
+}
+
 TEST_CASE("list iterator") {
     IntList list;
     const int SIZE = 100;

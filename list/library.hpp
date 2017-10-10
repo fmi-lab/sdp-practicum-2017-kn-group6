@@ -4,8 +4,8 @@
 #include "linked_list.hpp"
 
 template<typename T>
-int count(Node<T>* list, T x) {
-    Node<T>* curr = list;
+int count(Node<T> *list, T x) {
+    Node<T> *curr = list;
 
     int occurrences = 0;
     while (curr->_next != nullptr) {
@@ -24,9 +24,14 @@ Node<T> *concat(Node<T> *l1, Node<T> *l2) {
     return nullptr;
 }
 
-Node<int>* map(Node<int>* list, int (*fn)(int)) {
+Node<int> *map(Node<int> *list, int (*fn)(int)) {
     // TODO: implement
     return nullptr;
+}
+
+template<typename T>
+void reverse(Node<T> *&head) {
+    // TODO: implement
 }
 
 #endif //LIST_LIBRARY_H
