@@ -18,9 +18,18 @@ int count(Node<T> *list, T x) {
     return occurrences;
 }
 
+template <typename T>
+void append(Node<T> *&head1, Node<T> *head2) {
+    // TODO: implement
+}
+
+template <typename T>
+Node<T>* deepCopy(Node<T>* list) {
+    return nullptr;
+}
+
 template<typename T>
 Node<T> *concat(Node<T> *l1, Node<T> *l2) {
-    // TODO: implement
     return nullptr;
 }
 

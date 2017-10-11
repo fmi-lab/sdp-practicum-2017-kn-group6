@@ -165,15 +165,57 @@ TEST_CASE("count occurrences of an element in list") {
     CHECK(count(list.head(), 1) == 1);
 }
 
-// remove * doctest::skip(true) to unskip test
-TEST_CASE("concatenate lists" * doctest::skip(true)) {
+TEST_CASE("a list can be copied" * doctest::skip(true)) {
+    IntList list;
+    const int SIZE = 10;
+    for (int i = 0; i < SIZE; ++i) {
+        list.push_front(i);
+    }
+
+    Node<int> *copy = deepCopy(list.head());
+
+    for (int i = SIZE - 1; i >= 0; --i) {
+        CHECK(copy->_value == i);
+        copy = copy->_next;
+    }
+    CHECK(copy == nullptr);
+}
+
+TEST_CASE("append a list to another list" * doctest::skip(true)) {
     IntList list1 = {1, 2, 3, 4, 5, 6};
     IntList list2 = {7, 8, 9, 10};
 
-    Node<int>* list = concat<int>(list1.head(), list2.head());
+    Node<int> *head1 = list1.head(), *head2 = list2.head();
+    append<int>(head1, head2);
 
-    Node<int>* head = list;
     for (int i = 1; i <= 10; ++i) {
+        CHECK(head1->_value == i);
+        head1 = head1->_next;
+    }
+    CHECK(head1 == nullptr);
+}
+
+// remove * doctest::skip(true) to unskip test
+TEST_CASE("concatenate lists" * doctest::skip(true)) {
+    IntList list1;  // 1, 2, 3, ..., 10
+    const int SIZE1 = 10;
+    for (int i = SIZE1; i > 0; --i) {
+        list1.push_front(i);
+    }
+
+    IntList list2;  // 11, 12, 13, 14, 15
+    const int SIZE2 = 5;
+    for (int i = SIZE1 + SIZE2; i > SIZE1; --i) {
+        list2.push_front(i);
+    }
+
+    Node<int> *head1 = list1.head();
+    Node<int> *head2 = list2.head();
+
+    Node<int>* concatenated = concat<int>(head2, head1);
+
+    Node<int>* head = concatenated;
+    for (int i = 1; i <= SIZE1 + SIZE2; ++i) {
         CHECK(head->_value == i);
         head = head->_next;
     }
@@ -194,7 +236,7 @@ TEST_CASE("map function over list" * doctest::skip(true)) {
     CHECK(head == nullptr);
 }
 
-TEST_CASE("revesing a list") {
+TEST_CASE("revesing a list" * doctest::skip(true)) {
     IntList list;
     const int SIZE = 3;
     for (int i = 0; i < SIZE; ++i) {
