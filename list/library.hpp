@@ -20,7 +20,15 @@ int count(Node<T> *list, T x) {
 
 template <typename T>
 void append(Node<T> *&head1, Node<T> *head2) {
-    // TODO: implement
+    if (head1 == nullptr) {
+        head1 = head2;
+    }
+
+    Node<T>* curr = head1;
+    while (curr->_next != nullptr) {
+        curr = curr->_next;
+    }
+    curr->_next = head2;
 }
 
 template <typename T>
@@ -40,7 +48,16 @@ Node<int> *map(Node<int> *list, int (*fn)(int)) {
 
 template<typename T>
 void reverse(Node<T> *&head) {
-    // TODO: implement
+    Node<T> *curr = head, *prev = nullptr, *next = nullptr;
+
+    while (curr != nullptr) {
+        next = curr->_next;
+        curr->_next = prev;
+        prev = curr;
+        curr = next;
+    }
+
+    head = prev;
 }
 
 #endif //LIST_LIBRARY_H

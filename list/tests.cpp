@@ -179,7 +179,7 @@ TEST_CASE("a list can be copied" * doctest::skip(true)) {
     CHECK(copy == nullptr);
 }
 
-TEST_CASE("append a list to another list" * doctest::skip(true)) {
+TEST_CASE("append a list to another list") {
     IntList list1 = {1, 2, 3, 4, 5, 6};
     IntList list2 = {7, 8, 9, 10};
 
@@ -234,7 +234,7 @@ TEST_CASE("map function over list" * doctest::skip(true)) {
     CHECK(head == nullptr);
 }
 
-TEST_CASE("revesing a list" * doctest::skip(true)) {
+TEST_CASE("reversing a list") {
     IntList list;
     const int SIZE = 3;
     for (int i = 0; i < SIZE; ++i) {
@@ -261,7 +261,6 @@ TEST_CASE("list iterator") {
 
     REQUIRE(list.size() == SIZE);
 
-    /*
     SUBCASE("traversal with prefix operator++") {
         ListIterator<int> iter = list.begin();
 
@@ -307,5 +306,4 @@ TEST_CASE("list iterator") {
         CHECK(!iter);
         CHECK(iter == list.end());
     }
-    */
 }

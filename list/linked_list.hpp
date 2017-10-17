@@ -17,7 +17,50 @@ public:
 
 template <typename T>
 class ListIterator {
-    // TODO: implement
+    typedef ListIterator<T> I;
+
+private:
+    Node<T>* _head;
+
+public:
+    ListIterator(Node<T>* head = nullptr) : _head(head) {}
+
+    T& operator*() const {
+        return _head->_value;
+    }
+
+    I& operator->() {
+        return *this;
+    }
+
+    bool operator==(const I& other) const {
+        return _head == other._head;
+    }
+
+    bool operator!=(const I& other) const {
+        return !(*this == other);
+    }
+
+    operator bool() const {
+        return _head != nullptr;
+    }
+
+    bool operator!() const {
+        return !operator bool();
+    }
+
+    I operator++(int) { // cannot return a reference to old data
+        I copy = *this;
+        operator++();
+        return copy;
+    }
+
+    I& operator++() {
+        if (*this) {    // reuse operator bool()
+            _head = _head->_next;
+        }
+        return *this;
+    };
 };
 
 template <typename T>
@@ -99,12 +142,10 @@ public:
     }
 
     ListIterator<T> begin() const {
-        // TODO: implement
-        return ListIterator<T>();
+        return ListIterator<T>(_head);
     }
 
     ListIterator<T> end() const {
-        // TODO: implement
         return ListIterator<T>();
     }
 
