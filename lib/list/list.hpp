@@ -9,9 +9,9 @@ public:
     virtual const std::size_t size() const = 0;
     virtual bool empty() const = 0;
 
-    virtual T& front() const = 0;
-    virtual T& back() const = 0;
-    virtual T& get(int) const = 0;
+    virtual T front() const = 0;
+    virtual T back() const = 0;
+    virtual T get(int) const = 0;
 
     virtual void push_front(const T&) = 0;
     virtual bool pop_front() = 0;

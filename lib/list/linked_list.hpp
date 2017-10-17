@@ -157,12 +157,12 @@ public:
         return _head == nullptr;
     }
 
-    T& front() const override {
+    T front() const override {
         // TODO: return nullptr when no value
         return _head->_value;
     }
 
-    T& back() const override {
+    T back() const override {
         Node<T> *curr = _head;
 
         while (curr->_next != nullptr) {
@@ -172,7 +172,7 @@ public:
         return curr->_value;
     }
 
-    T& get(int position) const override {
+    T get(int position) const override {
         if (position < 0 || _size <= position) {
             // TODO: return nullptr
         }
