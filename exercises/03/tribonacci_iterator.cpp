@@ -19,7 +19,10 @@ private:
         c = curr_c - b - a;
     }
 public:
-    TribonacciIterator() : a(1), b(1), c(2) {}
+    // needed for problem 3, so that we can change the base
+    TribonacciIterator(int _a, int _b, int _c) : a(_a), b(_b), c(_c) {}
+
+    TribonacciIterator() : TribonacciIterator(0, 0, 1) {}
 
     TribonacciIterator& operator++() {
         generateNext(a, b, c);
@@ -61,7 +64,7 @@ public:
 };
 
 TEST_CASE("TribonacciIterator") {
-    std::vector<int> numbers = {1, 1, 2, 4, 7, 13, 24, 44, 81, 149, 274};
+    std::vector<int> numbers = {0, 0, 1, 1, 2, 4, 7, 13, 24, 44, 81, 149, 274};
     TribonacciIterator iter;
 
     SUBCASE("traversal with prefix operator++") {
