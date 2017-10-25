@@ -8,7 +8,7 @@ bool is_operator2(char c) {
     return c == '+' || c == '-' || c == '*' || c == '/';
 }
 
-int presedence(char operation) {
+int precedence(char operation) {
     switch (operation) {
         case '+': return 1;
         case '-': return 1;
@@ -25,7 +25,7 @@ string infix_to_postfix(const string& expression) {
     for (char token: expression) {
         // TODO: reuse is_operator
         if (is_operator2(token)) {
-            while (!operators.empty() && presedence(operators.top()) >= presedence(token)) {
+            while (!operators.empty() && precedence(operators.top()) >= precedence(token)) {
                 postfix.push_back(operators.top());
                 operators.pop();
             }
