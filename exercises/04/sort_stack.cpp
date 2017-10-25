@@ -29,13 +29,30 @@ void sort(stack<int>& s) {
                 is_minimum_passed = true;
             } else {
                 s.push(item);
-                helper.pop();
             }
+
+            helper.pop();
         }
     }
 }
 
 TEST_CASE("sorting a stack") {
+    SUBCASE("a sorted stack stays sorted") {
+        const int SIZE = 3;
+        stack<int> s;
+
+        for (int i = 1; i <= SIZE; ++i) {
+            s.push(i);
+        }
+
+        sort(s);
+
+        for (int i = SIZE; i > 0; --i) {
+            CHECK(i == s.top());
+            s.pop();
+        }
+    }
+
     SUBCASE("a stack in descending order can be sorted in ascending order") {
         const int SIZE = 30;
         stack<int> s;
