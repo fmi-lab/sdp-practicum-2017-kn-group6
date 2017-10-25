@@ -57,4 +57,5 @@ TEST_CASE("convert infix to postfix expression") {
     CHECK("32*5+" == infix_to_postfix("3 * 2 + 5"));
     CHECK("93-3/" == infix_to_postfix("(9 - 3) / 3"));
     CHECK("23*42/+" == infix_to_postfix("2 * 3 + 4 / 2"));
+    CHECK("5711+-/3*211++-" == infix_to_postfix("((5 / (7 - (1 + 1))) * 3) - (2 + (1 + 1))"));
 }
