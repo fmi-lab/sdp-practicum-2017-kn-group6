@@ -8,6 +8,16 @@ bool is_operator2(char c) {
     return c == '+' || c == '-' || c == '*' || c == '/';
 }
 
+int presedence(char operation) {
+    switch (operation) {
+        case '+': return 1;
+        case '-': return 1;
+        case '*': return 2;
+        case '/': return 2;
+        default:  return 0;
+    }
+}
+
 string infix_to_postfix(const string& expression) {
     string postfix;
     stack<char> operators;
@@ -15,6 +25,10 @@ string infix_to_postfix(const string& expression) {
     for (char token: expression) {
         // TODO: reuse is_operator
         if (is_operator2(token)) {
+            while (!operators.empty() && presedence(operators.top()) >= presedence(token)) {
+                postfix.push_back(operators.top());
+                operators.pop();
+            }
             operators.push(token);
         } else if (isdigit(token)) {
             postfix.push_back(token);
@@ -40,6 +54,7 @@ string infix_to_postfix(const string& expression) {
 TEST_CASE("convert infix to postfix expression") {
     CHECK("34-5+" == infix_to_postfix("(3 - 4) + 5"));
     CHECK("32-" == infix_to_postfix("3 - 2"));
-//    CHECK("532*+" == infix_to_postfix("3 * 2 + 5"));
+    CHECK("32*5+" == infix_to_postfix("3 * 2 + 5"));
     CHECK("93-3/" == infix_to_postfix("(9 - 3) / 3"));
+    CHECK("23*42/+" == infix_to_postfix("2 * 3 + 4 / 2"));
 }
