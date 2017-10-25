@@ -38,7 +38,7 @@ void sort(stack<int>& s) {
 
 TEST_CASE("sorting a stack") {
     SUBCASE("a sorted stack stays sorted") {
-        const int SIZE = 3;
+        const int SIZE = 1000;
         stack<int> s;
 
         for (int i = 1; i <= SIZE; ++i) {
@@ -54,7 +54,7 @@ TEST_CASE("sorting a stack") {
     }
 
     SUBCASE("a stack in descending order can be sorted in ascending order") {
-        const int SIZE = 30;
+        const int SIZE = 1000;
         stack<int> s;
 
         for (int i = SIZE; i > 0; --i) {
