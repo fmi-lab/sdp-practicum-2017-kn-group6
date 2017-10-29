@@ -1,6 +1,16 @@
 Упражнение 4
 ============
 
+[C++ 11 range-based `for` loop](http://en.cppreference.com/w/cpp/language/range-for)
+
+```cpp
+std::string expression = "abc";
+for (char token: expression) {
+    std::cout << token << "!";
+}
+// prints a!b!c!
+```
+
 Задачи
 ------
 
