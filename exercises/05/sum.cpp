@@ -9,8 +9,6 @@ int sum(TreeNode<int> *root) {
     return root->value + sum(root->left) + sum(root->right);
 }
 
-typedef TreeNode<int> IntNode;
-
 TEST_CASE ("sum tree") {
     TreeNode<int> *tree =
         new IntNode(10,

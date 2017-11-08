@@ -12,4 +12,6 @@ public:
             : value(_value), left(_left), right(_right) {}
 };
 
+typedef TreeNode<int> IntNode;
+
 #endif //TREE_NODE_H
