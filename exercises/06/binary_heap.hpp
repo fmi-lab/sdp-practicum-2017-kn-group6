@@ -1,15 +1,17 @@
 #ifndef BINARY_HEAP_H
 #define BINARY_HEAP_H
 
+#include "priority_queue.hpp"
+
 #include <vector>
 #include <cassert>
 #include <iostream>
 
 // min-heap
-class BinaryHeap {
+class BinaryHeap : PriorityQueue<int> {
 private:
     std::vector<int> _nodes;
-    std::size_t _size;
+    int _size;
 
     static int parent(int k) { return k == 1 ? -1 : k / 2; }
     static int left(int k) { return k * 2; }
@@ -61,13 +63,13 @@ public:
         }
     }
 
-    std::size_t size() const { return _size; }
+    int size() const override { return _size; }
 
-    bool empty() const { return _size == 0; }
+    bool empty() const override { return _size == 0; }
 
-    int top() const { return _nodes[1]; }
+    int top() const override { return _nodes[1]; }
 
-    void push(int item) {
+    void push(const int& item) override {
         _nodes.push_back(item);
         _size++;
         sift_up((int)_size);
