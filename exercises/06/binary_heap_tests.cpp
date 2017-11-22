@@ -5,6 +5,30 @@
 
 using namespace std;
 
+void heapSort(vector<int>& numbers) {
+    BinaryHeap heap;
+    for (int i = 0; i < numbers.size(); ++i) {
+        heap.push(numbers[i]);
+    }
+
+    for (int i = 0; i < numbers.size(); ++i) {
+        numbers[i] = heap.top();
+        heap.pop();
+    }
+}
+
+TEST_CASE("heap sort") {
+    std::vector<int> numbers {5, 3, 1, 2, 4};
+
+    heapSort(numbers);
+
+    CHECK(numbers[0] == 1);
+    CHECK(numbers[1] == 2);
+    CHECK(numbers[2] == 3);
+    CHECK(numbers[3] == 4);
+    CHECK(numbers[4] == 5);
+}
+
 TEST_CASE("binary heap") {
     SUBCASE("make heap") {
         std::vector<int> numbers {9, 4, 12, 88, -2, 15, 3, 42, -114, 12, 3};

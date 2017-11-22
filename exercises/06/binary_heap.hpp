@@ -25,7 +25,7 @@ private:
 
         int p = _nodes[parent(k)];
         if (p > _nodes[k]) {
-            std::swap(_nodes[k], p);
+            std::swap(_nodes[k], _nodes[parent(k)]);
             sift_up(parent(k));
         }
     }
