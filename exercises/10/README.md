@@ -8,14 +8,16 @@
 [std::unordered_map](http://en.cppreference.com/w/cpp/container/unordered_map).
 Какви сложности имат основните операции?
 
+`using namespace std;`
+
 1. Реализирайте функция
-`std::unordered_map<int, vector<int>> group_by(std::vector<int> domain, int (*f)(int))`,
+`unordered_map<int, vector<int>> group_by(vector<int> domain, int (*f)(int))`,
 която получава редица от числа `domain`,
 прилага `f` върху всяко число и групира резултатите по изхода на функцията.
 
    Нека е дефинирана функцията `int mod3(int x) { return x % 3; }`.
 
-   Тогава `group_by(std::vector<int>({1, 2, 3, 4, 5}), mod3)`
+   Тогава `group_by(vector<int>({1, 2, 3, 4, 5}), mod3)`
    връща хеш таблицата, която има наредените двойки
    `{0, {3}}, {1, {1, 4}}, {2, {2, 5}}`.
 
@@ -24,25 +26,25 @@
    - `R` (range) - изходни стойности на `f`.
 
 3. Реализирайте шаблонна функция
-`std::unordered_map<T, long> histogram(std::vector<T> items)`,
+`unordered_map<T, long> histogram(vector<T> items)`,
 която връща хистограма с броя на срещанията на всеки елемент от редицата `items`.
 
-   Например `histogram(std::vector<int>({1, 3, 1, 1, 2, 2}))`
+   Например `histogram(vector<int>({1, 3, 1, 1, 2, 2}))`
    връща хеш таблицата, която има наредените двойки
    `{1, 3}, {3, 1}, {2, 2}`.
 
 4. Реализирайте функция
-`std::vector<std::pair<int, int>> two_sum(std::vector<int> numbers, int sum)`,
+`vector<pair<int, int>> two_sum(vector<int> numbers, int sum)`,
 която намира всички наредени двойки в `numbers`,
 които образуват сумата `sum`.
 Каква е сложността на вашето решение? Можете ли да я подобрите?
 
-   Например `two_sum(std::vector<int>({1, 3, 1, 1, 2, 2}), 4)`
+   Например `two_sum(vector<int>({1, 3, 1, 1, 2, 2}), 4)`
    връща редицата от наредени двойки
    `{{1, 3}, {3, 1}, {2, 2}}`.
 
 5. Реализирайте функция
-`std::vector<T> k_intersects(std::vector<std::vector<T>> lists)`,
+`vector<T> k_intersects(vector<vector<T>> lists)`,
 която намира сечението на редиците `lists`, които са точно `k` на брой.
 Каква сложност по време има вашето решение? Намерете оптималното решение.
 
@@ -57,8 +59,8 @@
    тогава тяхното сечение е `[5, 6]`.
 
 6. Реализирайте функция
-`std::vector<T> k_most_frequent(std::vector<T> items, int k)`,
+`vector<T> k_most_frequent(vector<T> items, int k)`,
 която намира `k` на брой от най-често срещаните елементи в `items`.
 
-   Например `k_most_frequent(std::vector<int>({1, 3, 1, 1, 2, 2, 4}), 2)`
+   Например `k_most_frequent(vector<int>({1, 3, 1, 1, 2, 2, 4}), 2)`
    връща редицата `[1, 2]`.
